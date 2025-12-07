@@ -33,9 +33,9 @@ public class Main {
                     int editId = input.nextInt();
                     input.nextLine();
 
-                    Task editTask = list.getById(editId);
+                    Task editTask = list.getbyIndex(editId);
                     if (editTask != null) {
-                        System.out.print("Judul baru: ");
+                        System.out.print("Masukkan judul baru: ");
                         editTask.title = input.nextLine();
                         System.out.println("Tugas berhasil diubah.");
                     } else {
@@ -44,10 +44,10 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Masukkan ID tugas yang ingin dihapus: ");
+                    System.out.print("Pilih tugas yang ingin dihapus: ");
                     int delId = input.nextInt();
 
-                    Task deleted = list.removeById(delId);
+                    Task deleted = list.removebyIndex(delId);
                     if (deleted != null) {
                         list.push(deleted);
                         System.out.println("Tugas dihapus (masuk Stack Undo).");
@@ -67,7 +67,7 @@ public class Main {
                         list.enqueue(undoTask);
                         System.out.println("Tugas berhasil dikembalikan.");
                     } else {
-                        System.out.println("Tidak ada tugas untuk di-undo.");
+                        System.out.println("Tidak ada tugas untuk dikembalikan.");
                     }
                     break;
             }

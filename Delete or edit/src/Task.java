@@ -10,6 +10,6 @@ class Task {
     }
 
     void display() {
-        System.out.println("ID: " + id + " | Judul: " + title + " | Status: " + status);
+        System.out.println(title);
     }
 }

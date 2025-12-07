@@ -50,6 +50,7 @@ public class Metode {
     }
 
     void display() {
+        int index = 0;
         if (isEmptyQueue()) {
             System.out.println("Tidak ada tugas.");
             return;
@@ -57,15 +58,16 @@ public class Metode {
 
         Node temp = front;
         while (temp != null) {
+            System.out.print(index + temp.data.id + ". ");
             temp.data.display();
             temp = temp.next;
         }
     }
 
-    Task getById(int id) {
+    Task getbyIndex(int index) {
         Node temp = front;
         while (temp != null) {
-            if (temp.data.id == id) {
+            if (temp.data.id == index) {
                 return temp.data;
             }
             temp = temp.next;
@@ -73,24 +75,25 @@ public class Metode {
         return null;
     }
 
-    Task removeById(int id) {
+    Task removebyIndex(int index) {
         if (isEmptyQueue()) return null;
 
         Node temp = front;
         Node prev = null;
 
         while (temp != null) {
-            if (temp.data.id == id) {
+            if (temp.data.id == index) {
                 if (prev == null) {
                     front = temp.next;
+                    if (front == null) {
+                        rear = null;
+                    }
                 } else {
                     prev.next = temp.next;
+                    if (temp == rear) {
+                        rear = prev;
+                    }
                 }
-
-                if (temp == rear) {
-                    rear = prev;
-                }
-
                 return temp.data;
             }
             prev = temp;
